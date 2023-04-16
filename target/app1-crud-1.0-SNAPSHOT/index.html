@@ -3,24 +3,40 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="assets/css/index.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class="form-container">
-            <form action="/app1-crud/finance" method="post">
+            <form class="form" action="/app1-crud/finance" method="post">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name"><br>
 
-                <label for="tipo">Tipo</label>
-                <input type="text" id="tipo" name="tipo"><br>
-
                 <label for="valor">Valor</label>
-                <input type="number" step='0.01' value='5.00' id="valor" name="valor"><br>
+                <input type="number" step='0.01' id="valor" name="valor"><br>
 
-                <input type="submit" value="Submit">
+                <label for="tipo">Tipo</label>
+                <select name="tipo">
+                    <option value="entrada"> entrada </option>
+                    <option value="entrada"> saida </option>
+                </select>
+
+                <button type="submit" name="btn" class="sbmt-button"> Registar </button>
             </form>
         </div>
         <div class="table-container"> 
-            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>nome</th>
+                        <th>tipo</th>
+                        <th>valor</th>
+                    </tr>
+                </thead>    
+            </table>
         </div>
     </body>
 </html>

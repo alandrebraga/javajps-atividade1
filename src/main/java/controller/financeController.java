@@ -63,15 +63,24 @@ public class financeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        ArrayList<Finance> finance = FinanceDAO.getAllRecords();
+        String idParam = request.getParameter("id");
         ObjectMapper mapper = new ObjectMapper();
         PrintWriter out = response.getWriter();
-        String financeJSON = mapper.writeValueAsString(finance);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        out.print(financeJSON);
-        out.flush();
+        
+        if (idParam == null) {
+            ArrayList<Finance> finance = FinanceDAO.getAllRecords();
+            String financeJSON = mapper.writeValueAsString(finance);
+            out.print(financeJSON);
+            out.flush();
+        } else {
+            int id = Integer.parseInt(idParam);
+            Finance finance = FinanceDAO.getRecordById(id);
+            String financeJSON = mapper.writeValueAsString(finance);
+            out.print(financeJSON);
+            out.flush();
+        }
     }
 
     /**
