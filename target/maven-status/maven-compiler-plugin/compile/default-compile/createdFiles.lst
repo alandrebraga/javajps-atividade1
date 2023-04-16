@@ -1,0 +1,5 @@
+model/teste.class
+controller/financeController.class
+model/Finance.class
+DAO/MainDAO.class
+DAO/FinanceDAO.class
