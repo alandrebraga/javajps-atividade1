@@ -6,7 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : Apr 16, 2023, 6:48:25 PM
     Author     : andre
 */
-:root { 
+:root {
     --bg-white: #F2F3F4;
 }
 html {
@@ -14,30 +14,33 @@ html {
     font-size: 62.5%;
 }
 body {
+    width: 80vw;
+    height: 80vh;
     font-size: 1.6rem;
     display: flex;
-    background-color: var(--bg-white)
+    background-color: var(--bg-white);
+    justify-content: space-around;
 }
 
-.form-container { 
+.form-container {
     width: 250px;
     height: 300px;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .form {
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
 }
 
-label { 
+label {
     margin-bottom: 10px;
     font-size: 1.4rem;
 }
 
-input { 
+input {
     border: none;
     border-bottom: 3px solid #000000;
     background-color: var(--bg-white);
@@ -48,23 +51,52 @@ input:hover{
     background-color: #D1D3DA;
 }
 
-input:focus { 
+input:focus {
     background-color: #D1D3DA;
 }
 
-select { 
+select {
     font-size: 1.2rem;
     border: 3px solid #000000;
     background-color: var(--bg-white);
     transition: 0.1s;
 }
 
-.sbmt-button { 
+.sbmt-button {
     margin-top: 20px;
 }
 
-button { 
+button {
     border: 3px solid #000000;
     background-color: var(--bg-white);
     font-weight: bold;
+}
+table, th, td{
+    text-align: left;
+    border-bottom: 3px solid #000000;
+}
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px 20px 10px 20px;
+}
+
+thead th:nth-child(1) {
+    width: 25%;
+}
+
+thead th:nth-child(2) {
+    width: 25%;
+}
+
+thead th:nth-child(3) {
+    width: 25%;
+}
+
+thead th:nth-child(4) {
+    width: 25%;
 }
