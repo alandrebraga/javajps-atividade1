@@ -6,8 +6,6 @@ package model;
 
 import DAO.FinanceDAO;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.ArrayList;
 
 /**
  *
@@ -16,9 +14,12 @@ import java.util.ArrayList;
 public class teste {
 
     public static void main(String[] args) throws JsonProcessingException {
-        ArrayList<Finance> finance = FinanceDAO.getAllRecords();
-        ObjectMapper mapper = new ObjectMapper();
-        String financeJSON = mapper.writeValueAsString(finance);
-        System.out.println(financeJSON);
+        Finance finance = FinanceDAO.getRecordById(29);
+        System.out.println(finance.getName());
+        
+        
+        finance = FinanceDAO.getRecordById(29);
+        
+        System.out.println(finance.getName());
     }
 }

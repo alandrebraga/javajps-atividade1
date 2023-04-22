@@ -51,7 +51,23 @@ public class FinanceDAO {
         }
         return null;
     }
-
+    
+    public static void updateRecord(Finance obj) { 
+        Finance finance = getRecordById(obj.getId());
+        
+        if(finance != null) {
+            finance.setName(obj.getName());
+            finance.setType(obj.getType());
+            finance.setValue(obj.getValue());
+            
+            String sql = "UPDATE financa SET name = ?, tipo = ?, valor = ? WHERE id = ?";
+            MainDAO.getInstance().execute(sql, 
+                    new Object[]{finance.getName(), 
+                        finance.getType(), 
+                        finance.getValue(), 
+                        finance.getId()});
+        }
+    }
     public static void saveRecord(Finance finance) {
         String sql = "INSERT INTO financa (name, tipo, valor) VALUES (?, ?, ?);";
         MainDAO.getInstance().execute(sql, new Object[]{finance.getName(), finance.getType(), finance.getValue()});

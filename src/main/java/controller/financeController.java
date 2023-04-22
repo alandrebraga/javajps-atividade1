@@ -6,11 +6,9 @@ package controller;
 
 import DAO.FinanceDAO;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -68,7 +66,7 @@ public class financeController extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        
+
         if (idParam == null) {
             ArrayList<Finance> finance = FinanceDAO.getAllRecords();
             String financeJSON = mapper.writeValueAsString(finance);
@@ -95,10 +93,32 @@ public class financeController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if ("POST".equalsIgnoreCase(request.getMethod())) {
-            String name = request.getParameter("name");
-            String tipo = request.getParameter("tipo");
-            String valor = request.getParameter("valor");
-            FinanceDAO.saveRecord(new Finance(name, tipo, Double.parseDouble(valor)));
+            String updateValue = request.getParameter("update");
+            String deleteValue = request.getParameter("delete");
+            String insertValue = request.getParameter("insert");
+
+            if (insertValue != null) {
+                String name = request.getParameter("name");
+                String tipo = request.getParameter("tipo");
+                String valor = request.getParameter("valor");
+                FinanceDAO.saveRecord(new Finance(name, tipo, Double.parseDouble(valor)));
+            } else if (updateValue != null) {
+                String id = request.getParameter("id");
+                String name = request.getParameter("name");
+                String tipo = request.getParameter("tipo");
+                String valor = request.getParameter("valor");
+                
+                Finance finance = new Finance(Integer.parseInt(id), name, tipo, Double.parseDouble(valor));
+                FinanceDAO.updateRecord(finance);
+           
+            } else if (deleteValue != null) {
+                String name = request.getParameter("name");
+                String tipo = request.getParameter("tipo");
+                String valor = request.getParameter("valor");
+                FinanceDAO.saveRecord(new Finance(name, tipo, Double.parseDouble(valor)));
+            }
+
+            response.sendRedirect("http://localhost:8080/app1-crud/");
         }
     }
 
