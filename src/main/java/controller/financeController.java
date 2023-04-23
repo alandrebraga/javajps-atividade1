@@ -112,12 +112,9 @@ public class financeController extends HttpServlet {
                 FinanceDAO.updateRecord(finance);
            
             } else if (deleteValue != null) {
-                String name = request.getParameter("name");
-                String tipo = request.getParameter("tipo");
-                String valor = request.getParameter("valor");
-                FinanceDAO.saveRecord(new Finance(name, tipo, Double.parseDouble(valor)));
+                String id = request.getParameter("id");
+                FinanceDAO.deleteRecord(Integer.parseInt(id));
             }
-
             response.sendRedirect("http://localhost:8080/app1-crud/");
         }
     }

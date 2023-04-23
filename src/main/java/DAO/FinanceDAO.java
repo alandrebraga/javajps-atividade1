@@ -68,6 +68,15 @@ public class FinanceDAO {
                         finance.getId()});
         }
     }
+    
+      
+    public static void deleteRecord(int id) { 
+        Finance finance = getRecordById(id);
+        String sql = "DELETE FROM financa WHERE id = ?";
+        if ( finance != null ) { 
+            MainDAO.getInstance().execute(sql, new Object[] { id });
+        }
+    }
     public static void saveRecord(Finance finance) {
         String sql = "INSERT INTO financa (name, tipo, valor) VALUES (?, ?, ?);";
         MainDAO.getInstance().execute(sql, new Object[]{finance.getName(), finance.getType(), finance.getValue()});
